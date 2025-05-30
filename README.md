@@ -1,2 +1,2 @@
 # huszonhat
-Kattints a linkre ahol megtalálod a visszaszámlálót: https://altakta.github.io/huszonhat/
+A 2026-os magyarországi legkorábban megtartható választás (ápr 12.) visszaszámlálója: https://altakta.github.io/huszonhat/
