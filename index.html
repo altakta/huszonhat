@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head> 
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visszaszámláló háttérképpel</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Impact;
+      background-color: #0F1012;
+      /* Háttérkép beállítása */
+      background-image: url("https://pcdn.hu/articles/images-xl/o/r/b/orbanviktor-330635.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: rgb(255, 153, 0); /* fehér szöveg a kontraszthoz */
+      text-shadow: 0 0 5px rgba(0,0,0,0.7); /* szöveg köré árnyék a jobb láthatóságért */
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+    #countdown {
+      background-color: rgba(0, 0, 0, 0.5); /* átlátszó fekete doboz */
+      padding: 20px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 2rem;
+      display: flex;
+      gap: 15px;
+    }
+    #countdown div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .label {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      color: #ccc;
+      text-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visszaszámláló 2026. április 12-ig</h1>
+  <div id="countdown">
+    <div><span id="days">0</span> <span class="label">nap</span></div>
+    <div><span id="hours">0</span> <span class="label">óra</span></div>
+    <div><span id="minutes">0</span> <span class="label">perc</span></div>
+    <div><span id="seconds">0</span> <span class="label">másodperc</span></div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date('2026-04-12T00:00:00+02:00');
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "Elérkezett az idő!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
